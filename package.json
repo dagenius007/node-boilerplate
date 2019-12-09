@@ -1,0 +1,28 @@
+{
+	"name": "roguestudios",
+	"version": "1.0.0",
+	"description": "Rogue studios ",
+	"main": "index.js",
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"dotenv-safe": "^8.2.0",
+		"esm": "^3.2.25",
+		"express": "^4.17.1",
+		"lodash": "^4.17.15",
+		"morgan": "^1.9.1",
+		"nodemon": "^2.0.1",
+		"path": "^0.12.7"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"start": "nodemon -r esm index.js",
+		"test": "npm run test"
+	},
+	"keywords": [
+		"node",
+		"vue"
+	],
+	"author": "Joshua Oluikpe",
+	"license": "ISC"
+}
