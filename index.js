@@ -1,13 +1,9 @@
-import config from './config'
-// const user = require('./config');
+import config from './config';
+// import { port, apiRoot } from './config'
 // import mongoose from './services/mongoose'
 import express from './src/services/express';
-// import api from './api'
 
-
-
-
-const app = express(config.apiRoot)
+const app = express(config.apiRoot);
 // require('greenlock-express').create({
 //   version: 'draft-11',
 //   server: 'https://acme-v02.api.letsencrypt.org/directory',
@@ -21,6 +17,8 @@ const app = express(config.apiRoot)
 // }).listen(80, 443)
 
 // mongoose.connect(mongo.uri, { useCreateIndex: true, useNewUrlParser: true })
-// mongoose.Promise = Promise
+// mongoose.Promise = Promised
 
-export default app
+app.listen(config.port, () => console.log(`Node Server listening on port ${config.port}!`));
+
+// export default app

@@ -25,7 +25,6 @@ const config = {
 		port: process.env.PORT || 9000,
 		ip: process.env.IP || '0.0.0.0',
 		apiRoot: process.env.API_ROOT || '',
-		defaultEmail: 'no-reply@posha.com',
 		// sendgridKey: requireProcessEnv('SENDGRID_KEY'),
 		// masterKey: requireProcessEnv('MASTER_KEY'),
 		// jwtSecret: requireProcessEnv('JWT_SECRET'),
@@ -39,19 +38,19 @@ const config = {
 	},
 	test: {},
 	development: {
-		// mongo: {
-		//   uri: 'mongodb://localhost/posha-api-dev',
-		//   options: {
-		//     debug: true
-		//   }
-		// }
+		mongo: {
+			uri: 'mongodb://127.0.0.1:27017/rogue',
+			options: {
+				debug: true
+			}
+		}
 	},
 	production: {
 		ip: process.env.IP || undefined,
-		port: process.env.PORT || 9000
-		// mongo: {
-		//   uri: process.env.MONGODB_URI || 'mongodb://localhost/posha-db'
-		// }
+		port: process.env.PORT || 9000,
+		mongo: {
+			uri: process.env.MONGODB_URI || 'mongodb://localhost/rogue'
+		}
 	}
 };
 
