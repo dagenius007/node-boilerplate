@@ -19,7 +19,7 @@ export default (apiRoot) => {
   }
 
   app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }))
-  app.use(bodyParser.json({ limit: '50mb' }))
+  app.use(bodyParser.json())
   app.use(apiRoot, router)
 //   app.use(queryErrorHandler())
 //   app.use(bodyErrorHandler())

@@ -1,6 +1,6 @@
 import config from './config';
 // import { port, apiRoot } from './config'
-// import mongoose from './services/mongoose'
+import mongoose from './src/services/mongo'
 import express from './src/services/express';
 
 const app = express(config.apiRoot);
@@ -16,7 +16,7 @@ const app = express(config.apiRoot);
 //   telemetry: true
 // }).listen(80, 443)
 
-// mongoose.connect(mongo.uri, { useCreateIndex: true, useNewUrlParser: true })
+mongoose.connect(config.mongo.uri, { useCreateIndex: true, useNewUrlParser: true })
 // mongoose.Promise = Promised
 
 app.listen(config.port, () => console.log(`Node Server listening on port ${config.port}!`));

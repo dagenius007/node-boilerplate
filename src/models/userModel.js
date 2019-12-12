@@ -1,19 +1,16 @@
 import mongoose, { Schema } from 'mongoose';
 
-const roles = ['user', 'super-admin', 'admin']
+const roles = ['user', 'super-admin', 'admin'];
 
 const userSchema = new Schema({
 	_id: Schema.Types.ObjectId,
 	name: {
 		type: String,
-		index: true,
-		trim: true,
 		required: true
 	},
 	username: {
 		type: String,
 		trim: true,
-		unique: true,
 		required: true,
 		minlength: 6
 	},
@@ -34,8 +31,7 @@ const userSchema = new Schema({
 		type: String,
 		enum: roles,
 		default: 'user'
-    },
-    
+	},
 	picture: {
 		type: String,
 		trim: true
@@ -43,3 +39,5 @@ const userSchema = new Schema({
 });
 
 module.exports = mongoose.model('User', userSchema);
+
+
