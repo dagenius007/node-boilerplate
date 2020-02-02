@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as UserController from '../controllers/UserController';
+const UserController = require('../../src/controllers/UserController');
 const router = new Router();
 
 router.get('/', function(req, res) {
