@@ -8,6 +8,8 @@ const app = express(config.apiRoot);
 mongoose.connect(config.mongo.uri, { useCreateIndex: true, useNewUrlParser: true })
 // mongoose.Promise = Promised
 
+console.log(__dirname)  
+
 app.listen(config.port, () => console.log(`Node Server listening on port ${config.port}!`));
 
 // export default app
