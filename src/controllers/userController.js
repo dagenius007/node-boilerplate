@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import Joi from 'joi';
 import { userSchema, loginSchema } from '../helpers/validation';
-const config = require('../../config');
+const config = require('../config');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 

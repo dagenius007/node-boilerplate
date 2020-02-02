@@ -1,6 +1,6 @@
 import config from './config';
-import mongoose from './src/services/mongo';
-import express from './src/services/express';
+import mongoose from './services/mongo';
+import express from './services/express';
 
 
 

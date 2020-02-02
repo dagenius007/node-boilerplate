@@ -1,6 +1,6 @@
 import Promise from 'bluebird';
 import mongoose from 'mongoose';
-import config from '../../config';
+import config from '../config';
 
 
 // Object.keys(config.mongo.options).forEach(key => {

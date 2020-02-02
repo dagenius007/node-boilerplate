@@ -2,6 +2,7 @@
 	"name": "roguestudios",
 	"version": "1.0.0",
 	"description": "Rogue studios ",
+	"main" :"src",
 	"private": true,
 	"engines": {
 		"node": "10.x"
@@ -30,7 +31,7 @@
 		"babel-plugin-module-resolver": "^4.0.0"
 	},
 	"scripts": {
-		"start": "nodemon -r esm index.js",
+		"start": "nodemon -r esm ./src",
 		"test": "npm run test"
 	},
 	"keywords": [

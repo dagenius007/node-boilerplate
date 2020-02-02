@@ -1,7 +1,6 @@
 import path from 'path';
 import merge from 'lodash/merge';
 
-/* istanbul ignore next */
 const requireProcessEnv = name => {
 	if (!process.env[name]) {
 		throw new Error('You must set the ' + name + ' environment variable');
@@ -9,12 +8,12 @@ const requireProcessEnv = name => {
 	return process.env[name];
 };
 
-/* istanbul ignore next */
+
 if (process.env.NODE_ENV !== 'production') {
 	const dotenv = require('dotenv-safe');
 	dotenv.config({
-		path: path.join(__dirname, '.env'),
-		sample: path.join(__dirname, '.env.example'),
+		path: path.join(__dirname, '../.env'),
+		sample: path.join(__dirname, '../.env.example'),
 	});
 }
 
