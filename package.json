@@ -3,6 +3,9 @@
 	"version": "1.0.0",
 	"description": "Rogue studios ",
 	"main": "index.js",
+	"engines": {
+		"node": "10.x"
+	},
 	"dependencies": {
 		"@hapi/joi": "^16.1.8",
 		"bcrypt": "^3.0.7",

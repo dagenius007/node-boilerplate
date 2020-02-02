@@ -1,62 +1,64 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
 
-
 const roles = ['user', 'super-admin', 'admin'];
 
 const UserSchema = new Schema({
 	_id: Schema.Types.ObjectId,
-	name: {
+	firstName: {
 		type: String,
 		required: true,
 	},
-	username: {
+	lastName: {
 		type: String,
-		trim: true,
 		required: true,
-		minlength: 6,
 	},
 	email: {
 		type: String,
-		match: /^\S+@\S+\.\S+$/,
 		required: true,
 		unique: true,
 		trim: true,
 		lowercase: true,
 	},
-	password: {
+	address: {
 		type: String,
 		required: true,
-		// minlength: 8,
 	},
-	role: {
-		type: String,
-		enum: roles,
-		default: 'user',
+	phoneNumber: {
+		type: Number,
 	},
-	picture: {
+	password: {
 		type: String,
-		trim: true,
+	},
+	userType: {
+		type: String,
+		enum: ['freight', 'car_shippment'],
 	},
 });
 
 UserSchema.pre('save', function(next) {
-	if (!this.isModified('password')) {
+	const user = this;
+	if (!user.isModified('password')) {
 		return next();
 	}
-	bcrypt.hash(this.password, 10, function(err, hash) {
+	bcrypt.hash(user.password, 10, function(err, hash) {
 		if (err) return next(err);
-		this.password = hash;
+		user.password = hash;
 		next();
 	});
-	next();
 });
 
 UserSchema.methods.validateUser = function(userPassword, callback) {
-	bcrypt.compare(userPassword, user.password, function(err, isMatch) {
-		if (err) return next(err);
+	bcrypt.compare(userPassword, this.password, function(err, isMatch) {
+		if (err) return callback(err);
 		callback(null, isMatch);
 	});
+};
+
+UserSchema.methods.toJSON = function() {
+	var obj = this.toObject();
+	delete obj.password;
+	return obj;
 };
 
 module.exports = mongoose.model('User', UserSchema);
