@@ -2,22 +2,30 @@ import mongoose from 'mongoose';
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
 import { userSchema } from '../helpers/validation';
-const User = require('../models/userModel');
+const config = require('../../config');
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 
 export const createUser = async (req, res) => {
-	const validator = Joi.validate(req.body, userSchema);
+	// const validator = Joi.validate(req.body, userSchema);
 	if (validator.error === null) {
 		try {
 			let user = await User.create({
 				_id: new mongoose.Types.ObjectId(),
 				name: req.body.name,
-				username: req.body.username
+				email: req.body.email,
+				username: req.body.username,
+				password: req.body.password,
 			});
-			console.log(user);
-			res.status(200).json({ message: 'Created successfully', user });
+
+			const token = jwt.sign({ email: user.email }, config.jwtSecret, {
+				expiresIn: 86400,
+			});
+
+			res.status(200).json({ message: 'Created successfully', user, token });
 		} catch (e) {
 			console.log(e);
-			return res.status(500).json({ message: 'Error' });
+			return res.status(500).json({ message: 'Error' + e });
 		}
 	} else {
 		const message = validator.error.details.map(i => i.message).join(',');
@@ -31,18 +39,18 @@ export const loginUser = async (req, res) => {
 	// if (validator.error === null) {
 	try {
 		const user = await User.findOne({
-			email: req.body.email
+			email: req.body.email,
 		});
 		if (user) {
-			bcrypt.compare(req.body.password, user.password, function(err, res) {
+			User.comparePassword('Password123', function(err, res) {
+				if (err) throw err;
 				return err
 					? res.status(401).json({ message: 'Authentication failed' })
 					: res.status(200).json({ message: 'Success', user });
 			});
-			res.status(200).json({ message: 'Created successfully', user });
 		}
 	} catch (e) {
 		console.log(e);
-		return res.status(401).json({ message: 'Authentication failed' });
+		return res.status(401).json({ message: 'Email/Password incorrect' });
 	}
 };

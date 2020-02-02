@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 	const dotenv = require('dotenv-safe');
 	dotenv.config({
 		path: path.join(__dirname, './.env'),
-		sample: path.join(__dirname, './.env.example')
+		sample: path.join(__dirname, './.env.example'),
 	});
 }
 
@@ -27,33 +27,32 @@ const config = {
 		apiRoot: process.env.API_ROOT || '',
 		// sendgridKey: requireProcessEnv('SENDGRID_KEY'),
 		// masterKey: requireProcessEnv('MASTER_KEY'),
-		// jwtSecret: requireProcessEnv('JWT_SECRET'),
+		jwtSecret: requireProcessEnv('JWT_SECRET'),
 		mongo: {
 			options: {
 				db: {
-					safe: true
-				}
-			}
-		}
+					safe: true,
+				},
+			},
+		},
 	},
 	test: {},
 	development: {
 		mongo: {
-			uri: 'mongodb://127.0.0.1:27017/rogue',
+			uri: 'mongodb://127.0.0.1:27017/test',
 			options: {
-				debug: true
-			}
-		}
+				debug: true,
+			},
+		},
 	},
 	production: {
 		ip: process.env.IP || undefined,
 		port: process.env.PORT || 9000,
 		mongo: {
-			uri: process.env.MONGODB_URI || 'mongodb://localhost/rogue'
-		}
-	}
+			uri: process.env.MONGODB_URI || 'mongodb://localhost/test',
+		},
+	},
 };
-
 
 module.exports = merge(config.all, config[config.all.env]);
 
