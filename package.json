@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"@hapi/joi": "^16.1.8",
+		"app-module-path": "^2.2.0",
 		"bcrypt": "^3.0.7",
 		"bcryptjs": "^2.4.3",
 		"bluebird": "^3.7.2",
@@ -26,7 +27,9 @@
 		"nodemon": "^2.0.1",
 		"path": "^0.12.7"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"babel-plugin-module-resolver": "^4.0.0"
+	},
 	"scripts": {
 		"start": "nodemon -r esm index.js",
 		"test": "npm run test"
