@@ -1,7 +1,7 @@
 {
     "plugins": [
         ["module-resolver", {
-            "root": ["./src/"]
+            "root": ["./src"]
         }],
         "transform-es2015-modules-commonjs"
     ]

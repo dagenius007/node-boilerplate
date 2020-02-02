@@ -2,7 +2,6 @@
 	"name": "roguestudios",
 	"version": "1.0.0",
 	"description": "Rogue studios ",
-	"main": "src/",
 	"private": true,
 	"engines": {
 		"node": "10.x"

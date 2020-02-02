@@ -8,7 +8,6 @@ const app = express(config.apiRoot);
 
 global.__basedir = __dirname;
 
-
 mongoose.connect(config.mongo.uri, { useCreateIndex: true, useNewUrlParser: true });
 // mongoose.Promise = Promised
 

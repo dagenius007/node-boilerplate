@@ -13,8 +13,8 @@ const requireProcessEnv = name => {
 if (process.env.NODE_ENV !== 'production') {
 	const dotenv = require('dotenv-safe');
 	dotenv.config({
-		path: path.join(__dirname, './.env'),
-		sample: path.join(__dirname, './.env.example'),
+		path: path.join(__dirname, '.env'),
+		sample: path.join(__dirname, '.env.example'),
 	});
 }
 
