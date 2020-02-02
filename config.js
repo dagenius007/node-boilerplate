@@ -25,8 +25,6 @@ const config = {
 		port: process.env.PORT || 9000,
 		ip: process.env.IP || '0.0.0.0',
 		apiRoot: process.env.API_ROOT || '/api/v1',
-		// sendgridKey: requireProcessEnv('SENDGRID_KEY'),
-		// masterKey: requireProcessEnv('MASTER_KEY'),
 		jwtSecret: requireProcessEnv('JWT_SECRET'),
 		mongo: {
 			options: {
@@ -36,7 +34,14 @@ const config = {
 			},
 		},
 	},
-	test: {},
+	test: {
+		mongo: {
+			uri: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/test',
+			options: {
+				debug: true,
+			},
+		},
+	},
 	development: {
 		mongo: {
 			uri: 'mongodb://127.0.0.1:27017/test',
