@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 const config = {
 	all: {
 		env: process.env.NODE_ENV || 'development',
-		root: path.join(__dirname, '..'),
+		// root: path.join(__dirname, '..'),
 		port: process.env.PORT || 9000,
 		ip: process.env.IP || '0.0.0.0',
 		apiRoot: process.env.API_ROOT || '/api/v1',
